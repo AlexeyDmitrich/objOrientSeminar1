@@ -6,7 +6,7 @@ public class Product {
     public Product(String name, double price, int value) {
         this.name = name;
         this.price = price;
-        counter=value;
+        this.counter=value;
     }
 
     public String getName() {
@@ -22,12 +22,20 @@ public class Product {
         return counter>0;
     }
 
+    public void addCounter(int value) {
+        this.counter = value;
+    }
+
+    public int getCounter() {
+        return this.counter;
+    }
+
     public double getPrice() {
         return price;
     }
 
     public void setPrice(double price) {
-        this.price = price*2;
+        this.price = price;
     }
 
     @Override
