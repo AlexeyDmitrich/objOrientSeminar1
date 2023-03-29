@@ -11,12 +11,12 @@ public class CoffeeMachine extends VendingMachine{
         this.coffee = coffee;
     }
 
-    public CoffeeMachine() {
-        this.water = null;
-        this.milk = null;
-        this.shugar = null;
-        this.coffee = null;
-    }
+//    public CoffeeMachine() {
+//        this.water = null;
+//        this.milk = null;
+//        this.shugar = null;
+//        this.coffee = null;
+//    }
 
     public void setWater(double volumeLitres) {
         this.water = new Water(volumeLitres);
@@ -67,11 +67,28 @@ public class CoffeeMachine extends VendingMachine{
         while (dose <= milk) {
             this.milk.sellCounter();
             dose++;
-
         }
-
-
-        Drink res = new Drink(name, water+milk, )
+        double temperature = ((water*this.water.getTemperature()+milk*this.milk.getTemperature())-(water+milk));
+        Drink res = new Drink(name, water+milk, temperature, (this.coffee.getPrice()+this.shugar.getPrice()+this.milk.getPrice()));
+        return res;
     }
+
+    public Drink getCappuccino (){
+        Drink cappuccino = getByReciept("Капучино", 3, 5, 150, 50);
+        return cappuccino;
+    }
+    public Drink getLatte (){
+        Drink cappuccino = getByReciept("Латте", 2, 7, 100, 100);
+        return cappuccino;
+    }
+    public Drink getEspresso (){
+        Drink cappuccino = getByReciept("Эспрессо", 4, 4, 50, 0);
+        return cappuccino;
+    }
+    public Drink getAmericano (){
+        Drink cappuccino = getByReciept("Американо", 4, 5, 150, 0);
+        return cappuccino;
+    }
+
 
 }

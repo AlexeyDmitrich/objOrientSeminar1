@@ -18,6 +18,8 @@ public class Main {
         System.out.println();
         PrintSell(mart,"Фиговина");
         System.out.println(mart);
+        PrintSell(mart, "капучино");
+
     }
 
     public static void PrintSell (VendingMachine machine, String nameProd){
