@@ -6,7 +6,7 @@ public class VendingMachine {
     private List<Product> products = new ArrayList<>();
     private double money = 0;
 
-    private CoffeeMachine lavatsa  = new CoffeeMachine(new Water(20),
+    private static CoffeeMachine lavatsa  = new CoffeeMachine(new Water(20),
             new Milk("Молоко для кофе", 85, 5),
             new Shugar("Русский сахар", 65, 5),
             new Coffee("Lavatsa", 800, 3));
