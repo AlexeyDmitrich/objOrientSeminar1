@@ -30,7 +30,7 @@ public class CoffeeMachine extends VendingMachine{
     public void setShugar(Shugar shugar) {
         this.shugar = shugar;
         this.shugar.addCounter(shugar.getCounter()*1000); // переводим килограммы в граммы
-        this.shugar.setPrice(shugar.getPrice()/1000);
+        this.shugar.setPrice(shugar.getPrice()/1000); // цена за грамм
     }
 
     public void setCoffee(Coffee coffee) {
@@ -47,17 +47,18 @@ public class CoffeeMachine extends VendingMachine{
         if (this.water.getTemperature()<75){
             System.out.printf("Вода остыла до %.1f градусов. Греем...\n", this.water.getTemperature());
             warmer();
+            System.out.println(this.water.getTemperature());
         }
         System.out.println("Нагрели, начинаем приготовление");
         int dose = 0;
         while (dose <= cofee) {
-            this.coffee.sellCounter();
+            this.coffee.sellCounterByGramm();
         dose++;
         }
         System.out.println("Помололи кофе");
         dose = 0;
         while (dose <= sugar) {
-            this.shugar.sellCounter();
+            this.shugar.sellCounterByGramm();
             dose++;
         }
         System.out.println("Насыпали сахар");
@@ -69,15 +70,17 @@ public class CoffeeMachine extends VendingMachine{
         System.out.printf("Налили кипяток, %.1f градусов.\n", this.water.getTemperature());
         dose = 0;
         while (dose <= milk) {
-            this.milk.sellCounter();
+            this.milk.sellCounterByGramm();
             dose++;
         }
         System.out.println("Добавили молоко");
-        double temperature = ((water*this.water.getTemperature()+milk*this.milk.getTemperature())-(water+milk));
-        Drink res = new Drink(name, water+milk, temperature, (this.coffee.getPrice()+this.shugar.getPrice()+this.milk.getPrice()));
+        double temperature = ((water*this.water.getTemperature()+milk*this.milk.getTemperature())/(water+milk));
+        System.out.println(this.water.getTemperature());
+        Drink res = new Drink(name, water+milk, temperature, (this.coffee.getPrice()/10+this.shugar.getPrice()/100+this.milk.getPrice()/100));
         System.out.println(res.toString());
 //        super.addProduct(res);
 
+        System.out.println(this.water.getTemperature());
         return res;
     }
 
@@ -86,16 +89,16 @@ public class CoffeeMachine extends VendingMachine{
         return cappuccino;
     }
     public Drink getLatte (){
-        Drink cappuccino = getByReciept("Латте", 2, 7, 100, 100);
-        return cappuccino;
+        Drink latte = getByReciept("Латте", 2, 7, 100, 100);
+        return latte;
     }
     public Drink getEspresso (){
-        Drink cappuccino = getByReciept("Эспрессо", 4, 4, 50, 0);
-        return cappuccino;
+        Drink espresso = getByReciept("Эспрессо", 4, 4, 50, 0);
+        return espresso;
     }
     public Drink getAmericano (){
-        Drink cappuccino = getByReciept("Американо", 4, 5, 150, 0);
-        return cappuccino;
+        Drink americano = getByReciept("Американо", 4, 5, 150, 0);
+        return americano;
     }
 
 

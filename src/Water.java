@@ -23,17 +23,7 @@ public class Water {
 
     public void setTemperature(double temperature) {
         this.temperature = temperature;
-        //TODO: Сделать культурный метод остывания воды
-//        while (this.temperature > 18) {
-//            long timeH = System.currentTimeMillis();
-//            long timeC;
-//            while (true) {
-//                timeC = System.currentTimeMillis();
-//                if ((timeH - timeC) > this.volume) {
-//                    this.temperature--;
-//                }
-//            }
-//        }
+        // todo: Имплементировать остывание
     }
 
     @Override
@@ -46,5 +36,19 @@ public class Water {
                 .append("t: ")
                 .append(temperature);
         return res.toString();
+    }
+
+    public void cool() {
+        // TODO: Реализовать метод остывания
+        while (this.temperature > 18) {
+            long timeH = System.currentTimeMillis();
+            long timeC;
+            while (true) {
+                timeC = System.currentTimeMillis();
+                if ((timeH - timeC) > this.volume) {
+                    this.temperature--;
+                }
+            }
+        }
     }
 }

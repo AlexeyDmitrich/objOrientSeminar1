@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class VendingMachine {
     private List<Product> products = new ArrayList<>();
     private double money = 0;
@@ -36,6 +37,7 @@ public class VendingMachine {
             if (item.getName().equalsIgnoreCase(name)) {
                 return item;
             }
+            else System.out.println("FALSE");
         }
 
         return null;

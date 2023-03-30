@@ -22,6 +22,11 @@ public class Product {
         return counter>0;
     }
 
+    public boolean sellCounterByGramm() {
+        this.counter-= this.counter/1000;
+        return counter>0;
+    }
+
     public void addCounter(int value) {
         this.counter = value;
     }
