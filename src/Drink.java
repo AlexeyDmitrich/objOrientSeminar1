@@ -14,7 +14,7 @@ public class Drink extends Product {
       StringBuilder res = new StringBuilder();
       res.append(super.getName())
               .append("\n")
-              .append(String.format("%f мл, %f *C"))
+      //        .append(String.format("%f мл, %f *C"))
               .append(super.getPrice())
               .append("р. \n");
       return res.toString();

@@ -45,36 +45,44 @@ public class CoffeeMachine extends VendingMachine{
 
     public Drink getByReciept (String name, int cofee, int sugar, int water, int milk){
         if (this.water.getTemperature()<75){
-            System.out.printf("Вода остыла до %f градусов. Греем...");
+            System.out.printf("Вода остыла до %.1f градусов. Греем...\n", this.water.getTemperature());
             warmer();
         }
+        System.out.println("Нагрели, начинаем приготовление");
         int dose = 0;
         while (dose <= cofee) {
             this.coffee.sellCounter();
         dose++;
         }
+        System.out.println("Помололи кофе");
         dose = 0;
         while (dose <= sugar) {
             this.shugar.sellCounter();
             dose++;
         }
+        System.out.println("Насыпали сахар");
         dose = 0;
         while (dose <= water) {
             this.water.setVolume(this.water.getVolume()-water);
             dose++;
         }
+        System.out.printf("Налили кипяток, %.1f градусов.\n", this.water.getTemperature());
         dose = 0;
         while (dose <= milk) {
             this.milk.sellCounter();
             dose++;
         }
+        System.out.println("Добавили молоко");
         double temperature = ((water*this.water.getTemperature()+milk*this.milk.getTemperature())-(water+milk));
         Drink res = new Drink(name, water+milk, temperature, (this.coffee.getPrice()+this.shugar.getPrice()+this.milk.getPrice()));
+        System.out.println(res.toString());
+//        super.addProduct(res);
+
         return res;
     }
 
     public Drink getCappuccino (){
-        Drink cappuccino = getByReciept("Капучино", 3, 5, 150, 50);
+        Drink cappuccino = getByReciept("капучино", 3, 5, 150, 50);
         return cappuccino;
     }
     public Drink getLatte (){

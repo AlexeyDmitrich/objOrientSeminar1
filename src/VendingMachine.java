@@ -14,12 +14,13 @@ public class VendingMachine {
 
     public VendingMachine addProduct(Product product) {
         products.add(product);
+        System.out.printf("Добавили в автомат %s \n", product);
         return this;
     }
 
     public Product searchProduct(String name) {
         if (name.equalsIgnoreCase("капучино")) {
-            products.add(lavatsa.getCappuccino());
+            this.addProduct(lavatsa.getCappuccino());
         }
         if (name.equalsIgnoreCase("латте")) {
             products.add(lavatsa.getLatte());

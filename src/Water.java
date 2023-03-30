@@ -1,3 +1,5 @@
+import com.sun.xml.internal.bind.v2.TODO;
+
 public class Water {
     private double volume;
     private double temperature;
@@ -21,16 +23,17 @@ public class Water {
 
     public void setTemperature(double temperature) {
         this.temperature = temperature;
-        while (this.temperature > 18) {
-            long timeH = System.currentTimeMillis();
-            long timeC;
-            while (true) {
-                timeC = System.currentTimeMillis();
-                if ((timeH - timeC) > this.volume) {
-                    this.temperature--;
-                }
-            }
-        }
+        //TODO: Сделать культурный метод остывания воды
+//        while (this.temperature > 18) {
+//            long timeH = System.currentTimeMillis();
+//            long timeC;
+//            while (true) {
+//                timeC = System.currentTimeMillis();
+//                if ((timeH - timeC) > this.volume) {
+//                    this.temperature--;
+//                }
+//            }
+//        }
     }
 
     @Override

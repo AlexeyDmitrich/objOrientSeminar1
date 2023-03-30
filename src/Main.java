@@ -8,15 +8,15 @@ public class Main {
                 .addProduct(new Chocolate("Аленка", 35.20,3, "Ореховый"));
 
         System.out.println("До продажи");
-        System.out.println(mart);
-        PrintSell(mart,"moloko");
-        PrintSell(mart,"moloko");
-        PrintSell(mart,"moloko");
-        System.out.println();
-        System.out.println("После продажи");
-        System.out.println(mart);
-        System.out.println();
-        PrintSell(mart,"Фиговина");
+//        System.out.println(mart);
+//        PrintSell(mart,"moloko");
+//        PrintSell(mart,"moloko");
+//        PrintSell(mart,"moloko");
+//        System.out.println();
+//        System.out.println("После продажи");
+//        System.out.println(mart);
+//        System.out.println();
+//        PrintSell(mart,"Фиговина");
         System.out.println(mart);
         PrintSell(mart, "капучино");
 
