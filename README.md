@@ -1,3 +1,7 @@
+## [Семинарская работа](https://github.com/AlexeyDmitrich/objOrientSeminar1/tree/demo) 
+### лежит в ветке **demo** 
+
+
 ## Дз к семинару 1 по курсу ООП
 ### Суть:
 На [торговый аппарат](https://github.com/AlexeyDmitrich/objOrientSeminar1/tree/demo), который мы запилили на семинаре навешано немного доп. функционала:
