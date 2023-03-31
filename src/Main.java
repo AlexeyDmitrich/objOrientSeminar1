@@ -1,12 +1,12 @@
 public class Main {
     public static void main(String[] args) {
         VendingMachine mart = new VendingMachine();
-//        mart.addProduct(new Product("Хлеб", 35, 10))
-//                .addProduct(new Milk("Белоснежка", 50, 2))
-//                .addProduct(new Product("Сыр", 100.2, 5))
-//                .addProduct(new ConcentrateMilk("Советская", 150, 1))
-//                .addProduct(new Chocolate("Аленка", 35.20,3, "Ореховый"))
-//                .addProduct(new Arabica("Lavatsa", 800, 1));
+        mart.addProduct(new Product("Хлеб", 35, 10))
+                .addProduct(new Milk("Белоснежка", 50, 2))
+                .addProduct(new Product("Сыр", 100.2, 5))
+                .addProduct(new ConcentrateMilk("Советская", 150, 1))
+                .addProduct(new Chocolate("Аленка", 35.20,3, "Ореховый"))
+                .addProduct(new Arabica("Lavatsa", 800, 1));
 //        System.out.println("До продажи");
 
 //        System.out.println(mart);
