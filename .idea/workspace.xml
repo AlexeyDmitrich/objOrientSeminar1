@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c56fd99d-a924-44ee-b011-e8305618f3fc" name="Changes" comment="Цена кофе пересчитана, температура настроена, кофемашина интегрирована в торгомат, подключен GUI. Именно после его подключения автомат и сломался.">
+    <list default="true" id="c56fd99d-a924-44ee-b011-e8305618f3fc" name="Changes" comment="Кофемашина больше не пытается захватить мир, но теряет воду при остывании.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CoffeeMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CoffeeMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Drink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VendingMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VendingMachine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,12 +87,12 @@
       <option name="project" value="LOCAL" />
       <updated>1680094007989</updated>
     </task>
-    <task id="LOCAL-00004" summary="Получилось заварить кофе. С ценой 950 рублей за стакан. Но с этим позже разберусь.">
-      <created>1680179143959</created>
+    <task id="LOCAL-00004" summary="Кофемашина больше не пытается захватить мир, но теряет воду при остывании.">
+      <created>1680209791382</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1680179143959</updated>
+      <updated>1680209791382</updated>
     </task>
     <task id="LOCAL-00005" summary="Цена кофе пересчитана, температура настроена, кофемашина интегрирована в торгомат, подключен GUI. Именно после его подключения автомат и сломался.">
       <created>1680265716993</created>
@@ -105,7 +101,7 @@
       <option name="project" value="LOCAL" />
       <updated>1680265716993</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
