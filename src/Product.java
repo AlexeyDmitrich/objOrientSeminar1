@@ -1,9 +1,9 @@
 public class Product {
     private String name;
     private double price;
-    private int counter;
+    private double counter;
 
-    public Product(String name, double price, int value) {
+    public Product(String name, double price, double value) {
         this.name = name;
         this.price = price;
         this.counter=value;
@@ -27,11 +27,11 @@ public class Product {
         return counter>0;
     }
 
-    public void addCounter(int value) {
+    public void addCounter(double value) {
         this.counter = value;
     }
 
-    public int getCounter() {
+    public double getCounter() {
         return this.counter;
     }
 

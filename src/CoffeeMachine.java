@@ -1,4 +1,4 @@
-public class CoffeeMachine extends VendingMachine{
+public class CoffeeMachine extends VendingMachine {
     private Water water;
     private Milk milk;
     private Shugar shugar;
@@ -6,6 +6,7 @@ public class CoffeeMachine extends VendingMachine{
 
     public CoffeeMachine(Water water, Milk milk, Shugar shugar, Coffee coffee) {
         this.water = water;
+        this.water.setVolume(this.water.getVolume() * 1000);
         this.milk = milk;
         this.shugar = shugar;
         this.coffee = coffee;
@@ -20,40 +21,41 @@ public class CoffeeMachine extends VendingMachine{
 
     public void setWater(double volumeLitres) {
         this.water = new Water(volumeLitres);
-        this.water.setVolume(water.getVolume()*1000);
+        this.water.setVolume(water.getVolume() * 1000);
     }
 
-    public void setMilk(String name, double price, int value) {
-        this.milk = new Milk(name, price/1000, value*1000); // переводим цену в цену за мл, а объем - в мл.
+    public void setMilk(String name, double price, double value) {
+        this.milk = new Milk(name, price / 1000, value * 1000); // переводим цену в цену за мл, а объем - в мл.
     }
 
     public void setShugar(Shugar shugar) {
         this.shugar = shugar;
-        this.shugar.addCounter(shugar.getCounter()*1000); // переводим килограммы в граммы
-        this.shugar.setPrice(shugar.getPrice()/1000); // цена за грамм
+        this.shugar.addCounter(shugar.getCounter() * 1000); // переводим килограммы в граммы
+        this.shugar.setPrice(shugar.getPrice() / 1000); // цена за грамм
     }
 
     public void setCoffee(Coffee coffee) {
         this.coffee = coffee;
-        this.coffee.addCounter(coffee.getCounter()*1000);
-        this.coffee.setPrice(coffee.getPrice()/1000);
+        this.coffee.addCounter(coffee.getCounter() * 1000);
+        this.coffee.setPrice(coffee.getPrice() / 1000);
     }
 
-    public void warmer (){
+    public void warmer() {
         this.water.setTemperature(98);
     }
 
-    public Drink getByReciept (String name, int cofee, int sugar, int water, int milk){
-        if (this.water.getTemperature()<75){
+    public Drink getByReciept(String name, int cofee, int sugar, int water, int milk) {
+        if (this.water.getTemperature() < 75) {
             System.out.printf("Вода остыла до %.1f градусов. Греем...\n", this.water.getTemperature());
             warmer();
-            System.out.println(this.water.getTemperature());
+            System.out.printf("Нагрели до %.1f начинаем приготовление", this.water.getTemperature());
+            System.out.println();
         }
-        System.out.println("Нагрели, начинаем приготовление");
+
         int dose = 0;
         while (dose <= cofee) {
             this.coffee.sellCounterByGramm();
-        dose++;
+            dose++;
         }
         System.out.println("Помололи кофе");
         dose = 0;
@@ -64,42 +66,72 @@ public class CoffeeMachine extends VendingMachine{
         System.out.println("Насыпали сахар");
         dose = 0;
         while (dose <= water) {
-            this.water.setVolume(this.water.getVolume()-water);
+            this.water.setVolume(this.water.getVolume() - 1);
             dose++;
         }
-        System.out.printf("Налили кипяток, %.1f градусов.\n", this.water.getTemperature());
+        System.out.printf("Налили кипяток (%.1f) градусов.\n", this.water.getTemperature());
         dose = 0;
         while (dose <= milk) {
             this.milk.sellCounterByGramm();
             dose++;
         }
-        System.out.println("Добавили молоко");
-        double temperature = ((water*this.water.getTemperature()+milk*this.milk.getTemperature())/(water+milk));
-        System.out.println(this.water.getTemperature());
-        Drink res = new Drink(name, water+milk, temperature, (this.coffee.getPrice()/10+this.shugar.getPrice()/100+this.milk.getPrice()/100));
-        System.out.println(res.toString());
+        if (milk>0) System.out.println("Добавили молоко");
+        double temperature = ((water * this.water.getTemperature() + milk * this.milk.getTemperature()) / (water + milk) - 4.2);
+//        System.out.println(this.water.getTemperature());
+        Drink res = new Drink(name, water + milk, temperature, (this.coffee.getPrice() / 100 * cofee + this.shugar.getPrice() / 100 * sugar + this.milk.getPrice() / 100 * milk));
+//        System.out.println(res.toString());
 //        super.addProduct(res);
-
-        System.out.println(this.water.getTemperature());
+        this.water.setTemperature(this.water.getTemperature() - 9.7);
+//        System.out.println(this.water.getTemperature());
         return res;
     }
 
-    public Drink getCappuccino (){
+    public Drink getCappuccino() {
         Drink cappuccino = getByReciept("капучино", 3, 5, 150, 50);
         return cappuccino;
     }
-    public Drink getLatte (){
+
+    public Drink getLatte() {
         Drink latte = getByReciept("Латте", 2, 7, 100, 100);
         return latte;
     }
-    public Drink getEspresso (){
+
+    public Drink getEspresso() {
         Drink espresso = getByReciept("Эспрессо", 4, 4, 50, 0);
         return espresso;
     }
-    public Drink getAmericano (){
+
+    public Drink getAmericano() {
         Drink americano = getByReciept("Американо", 4, 5, 150, 0);
         return americano;
     }
 
+    public void service(){
+        System.out.println("Сейчас в аппарате:");
+        System.out.println(this);
+        String coffName = input.Str("Введите название кофе");
+        Double coffPrice = input.Double("Сколько стоит килограмм?");
+        Double coffValue = input.Double("Введите вес кофе в кг");
+        this.setCoffee(new Arabica(coffName, coffPrice, coffValue));
+        String milkName = input.Str("Введите название молока");
+        Double milkPrice = input.Double("Сколько стоит литр?");
+        Double milkValue = input.Double("Введите объем молока в л");
+        this.setMilk(milkName, milkPrice, milkValue);
+        String sugarName = input.Str("Введите название сахара");
+        Double sugarPrice = input.Double("Сколько стоит килограмм?");
+        Double sugarValue = input.Double("Введите вес сахара в кг");
+        this.setShugar(new Shugar(sugarName, sugarPrice, sugarValue));
+        Double waterValue = input.Double("Сколько литров воды зальём?");
+    }
 
+    @Override
+    public String toString() {
+        StringBuilder res = new StringBuilder();
+        res.append(String.format("| Вода: %.2f л            |\n", this.water.getVolume() / 1000))
+                .append(String.format("| Молоко: %.2f л\n", this.milk.getCounter()))
+                .append(String.format("| Кофе: %.2f кг\n", this.coffee.getCounter()))
+                .append(String.format("| Сахар: %.2f кг\n", this.shugar.getCounter()))
+                .append(String.format("*--- температура: %.1f  ---*", this.water.getTemperature()));
+        return res.toString();
+    }
 }

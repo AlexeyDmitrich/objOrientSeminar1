@@ -1,9 +1,7 @@
 public class Shugar extends Product{
-    public Shugar(String name, double price, int value) {
+    public Shugar(String name, double price, Double value) {
         super(name, price, value);
     }
-
-
 
     @Override
     public String toString() {
