@@ -107,6 +107,9 @@ public class CoffeeMachine extends VendingMachine {
     }
 
     public void service(){
+
+        // TODO: пересмотреть логику в сторону адекватности
+
         System.out.println("Сейчас в аппарате:");
         System.out.println(this);
         String coffName = input.Str("Введите название кофе");
@@ -122,6 +125,7 @@ public class CoffeeMachine extends VendingMachine {
         Double sugarValue = input.Double("Введите вес сахара в кг");
         this.setShugar(new Shugar(sugarName, sugarPrice, sugarValue));
         Double waterValue = input.Double("Сколько литров воды зальём?");
+        this.setWater(waterValue);
     }
 
     @Override

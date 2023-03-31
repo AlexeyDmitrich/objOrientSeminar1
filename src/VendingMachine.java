@@ -96,6 +96,14 @@ public class VendingMachine {
         return target;
     }
 
+    public void getPriceList (){
+        int id = 1;
+        for (Product item:this.products) {
+            System.out.printf("%d. %s %s - %.2fруб. Осталось: %.0f\n",id,item.getClass().getName(),item.getName(),item.getPrice(),item.getCounter());
+            id++;
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();

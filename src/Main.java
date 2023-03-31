@@ -62,7 +62,7 @@ public class Main {
                     buy(machineName);
                     break;
                 case 2:
-                    //TODO: запилить прайс
+                    machineName.getPriceList();
                     break;
                 case 3:
                     System.out.println(machineName.toString());
