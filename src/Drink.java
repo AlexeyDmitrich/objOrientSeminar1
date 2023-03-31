@@ -19,7 +19,7 @@ public class Drink extends Product {
         } else {
             res.append(String.format("%.2f л, %.1f*C \n", volume / 1000, temperature));
         }
-        res.append(super.getPrice())
+        res.append(String.format("%.2f", super.getPrice()))
                 .append("р. \n");
         return res.toString();
     }

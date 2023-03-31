@@ -20,23 +20,40 @@ public class CoffeeMachine extends VendingMachine {
 //    }
 
     public void setWater(double volumeLitres) {
-        this.water = new Water(volumeLitres);
-        this.water.setVolume(water.getVolume() * 1000);
+        if (this.water.getVolume()>0){
+            this.water.setVolume((this.water.getVolume())+volumeLitres*1000);
+        }
+        else {
+            this.water = new Water(volumeLitres);
+            this.water.setVolume(water.getVolume() * 1000);
+        }
     }
 
     public void setMilk(String name, double price, double value) {
-        this.milk = new Milk(name, price / 1000, value * 1000); // переводим цену в цену за мл, а объем - в мл.
+        this.milk = new Milk(name, price / 1000, (value)+this.milk.getCounter()); // переводим цену в цену за мл, а объем - в мл.
     }
 
     public void setShugar(Shugar shugar) {
-        this.shugar = shugar;
-        this.shugar.addCounter(shugar.getCounter() * 1000); // переводим килограммы в граммы
+        if (this.shugar == null || this.shugar.getCounter()==0) {
+            this.shugar = shugar;
+        }
+        else {
+            double counter = (this.shugar.getCounter()+shugar.getCounter());
+            shugar = new Shugar(shugar.getName(),shugar.getPrice(),counter);
+        }
+        this.shugar.addCounter(shugar.getCounter()); // переводим килограммы в граммы
         this.shugar.setPrice(shugar.getPrice() / 1000); // цена за грамм
     }
 
     public void setCoffee(Coffee coffee) {
-        this.coffee = coffee;
-        this.coffee.addCounter(coffee.getCounter() * 1000);
+        if (this.coffee == null || this.coffee.getCounter()==0) {
+            this.coffee = coffee;
+        }
+        else {
+            double counter = (this.coffee.getCounter()+coffee.getCounter());
+            coffee = new Arabica(coffee.getName(), coffee.getPrice(), counter);
+        }
+        this.coffee.addCounter(coffee.getCounter());
         this.coffee.setPrice(coffee.getPrice() / 1000);
     }
 
@@ -78,7 +95,7 @@ public class CoffeeMachine extends VendingMachine {
         if (milk>0) System.out.println("Добавили молоко");
         double temperature = ((water * this.water.getTemperature() + milk * this.milk.getTemperature()) / (water + milk) - 4.2);
 //        System.out.println(this.water.getTemperature());
-        Drink res = new Drink(name, water + milk, temperature, (this.coffee.getPrice() / 100 * cofee + this.shugar.getPrice() / 100 * sugar + this.milk.getPrice() / 100 * milk));
+        Drink res = new Drink(name, water + milk, temperature, (((this.coffee.getPrice() / 1000) * cofee * 10) + ((this.shugar.getPrice() / 1000) * sugar * 5) + ((this.milk.getPrice() / 1000) * milk * 2)));
 //        System.out.println(res.toString());
 //        super.addProduct(res);
         this.water.setTemperature(this.water.getTemperature() - 9.7);
