@@ -1,12 +1,12 @@
 public class Product {
     private String name;
     private double price;
-    private int counter;
+    private double counter;
 
-    public Product(String name, double price, int value) {
+    public Product(String name, double price, double value) {
         this.name = name;
         this.price = price;
-        counter=value;
+        this.counter=value;
     }
 
     public String getName() {
@@ -22,12 +22,25 @@ public class Product {
         return counter>0;
     }
 
+    public boolean sellCounterByGramm() {
+        this.counter-= this.counter/1000;
+        return counter>0;
+    }
+
+    public void addCounter(double value) {
+        this.counter = value;
+    }
+
+    public double getCounter() {
+        return this.counter;
+    }
+
     public double getPrice() {
         return price;
     }
 
     public void setPrice(double price) {
-        this.price = price*2;
+        this.price = price;
     }
 
     @Override

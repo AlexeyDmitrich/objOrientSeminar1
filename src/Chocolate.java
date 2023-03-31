@@ -1,7 +1,7 @@
 public class Chocolate extends Product{
 
     private String taste;
-    public Chocolate(String name, double price, int value, String taste) {
+    public Chocolate(String name, double price, double value, String taste) {
         super(name, price, value);
         this.taste = taste;
     }
